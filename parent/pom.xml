@@ -19,9 +19,12 @@
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2020.0.4</spring-cloud.version>
+        <docker.fabric8.version>0.36.0</docker.fabric8.version>
+        <docker.repository>drakus73/micro</docker.repository>
     </properties>
 
     <modules>
+        <module>data</module>
         <module>disc</module>
         <module>central</module>
         <module>cpu</module>
@@ -29,7 +32,6 @@
         <module>gpu</module>
         <module>ip-service</module>
         <module>motherboard</module>
-        <module>data</module>
     </modules>
 
     <dependencies>
@@ -57,22 +59,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
