@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: currency
+  labels:
+    app: currency
+spec:
+  type: ClusterIP
+  selector:
+    app: currency
+  ports:
+    - port: 7091
+      protocol: TCP
+      targetPort: 7091

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currency
+  labels:
+    app: currency
+spec:
+  selector:
+    matchLabels:
+      app: currency
+  replicas: 1
+  template:
+    metadata:
+      name: currency
+      labels:
+        app: currency
+    spec:
+      containers:
+        - name: currency
+          imagePullPolicy: Always
+          image: drakus73/micro:ip-service
+          ports:
+            - containerPort: 7091
+              name: currency-port
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
