@@ -14,13 +14,13 @@ public class CPUConfig {
 
     private String name;
 
-    private Boolean overclockingConfig;
+    private Boolean overclocking;
 
-    private Boolean frequencyConfig;
+    private Boolean frequency;
 
-    private Boolean temperatureConfig;
+    private Boolean temperature;
 
-    private Boolean loadSharingConfig;
+    private Boolean loadSharing;
 
-    private Boolean loadQuantityConfig;
+    private Boolean loadQuantity;
 }

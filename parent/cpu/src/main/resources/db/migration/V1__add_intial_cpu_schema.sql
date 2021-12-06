@@ -9,21 +9,21 @@ create table cpu_history
 (
     id bigserial primary key,
     time TIMESTAMP,
-    overclocking DECIMAL,
+    overclocking BOOLEAN,
     frequency DOUBLE PRECISION,
     temperature DOUBLE PRECISION,
-    loadSharing loadSharing,
-    loadQuantity loadQuantity
+    load_sharing loadSharing,
+    load_quantity loadQuantity
 );
 
 create table cpu_config
 (
     id bigserial primary key,
     name VARCHAR(20),
-    overclockingConfig DECIMAL,
-    frequencyConfig DECIMAL,
-    temperatureConfig DECIMAL,
-    loadSharingConfig DECIMAL,
-    loadQuantityConfig DECIMAL
+    overclocking BOOLEAN,
+    frequency BOOLEAN,
+    temperature BOOLEAN,
+    load_sharing BOOLEAN,
+    load_quantity BOOLEAN
 
 );
