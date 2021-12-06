@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip-service
+  labels:
+    app: ip-service
+spec:
+  selector:
+    matchLabels:
+      app: ip-service
+  replicas: 1
+  template:
+    metadata:
+      name: ip-service
+      labels:
+        app: ip-service
+    spec:
+      containers:
+        - name: ip-service
+          imagePullPolicy: Always
+          image: drakus73/micro:ip-service
+          ports:
+            - containerPort: 7090
+              name: ip-port
