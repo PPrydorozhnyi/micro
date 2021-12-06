@@ -13,6 +13,6 @@ create table motherboard_config
 (
     id bigserial primary key,
     name VARCHAR(20),
-    components DECIMAL,
-    free_ports DECIMAL
+    components BOOLEAN,
+    free_ports BOOLEAN
 );
