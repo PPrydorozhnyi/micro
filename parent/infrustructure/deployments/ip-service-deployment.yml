@@ -22,3 +22,10 @@ spec:
           ports:
             - containerPort: 7090
               name: ip-port
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
