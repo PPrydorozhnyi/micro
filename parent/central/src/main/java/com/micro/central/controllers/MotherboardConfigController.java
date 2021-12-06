@@ -1,6 +1,6 @@
 package com.micro.central.controllers;
 
-import com.micro.central.feigns.MotherboardConfigClient;
+import com.micro.central.feigns.MotherboardClient;
 import com.micro.data.models.MotherboardConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,12 +16,12 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class MotherboardConfigController {
 
-    private final MotherboardConfigClient motherboardConfigClient;
+    private final MotherboardClient motherboardClient;
 
     @GetMapping("/motherboard-config/{id}")
     public MotherboardConfigDto getMotherboardConfigById(@PathVariable Long id){
         log.info("GetMotherboardConfigById {}", id);
-        var config = motherboardConfigClient.getById(id).getContent();
+        var config = motherboardClient.getConfigById(id).getContent();
         log.info("config {}", config);
 
         return config;
@@ -30,7 +30,7 @@ public class MotherboardConfigController {
     @GetMapping("/motherboard-configs")
     public Collection<MotherboardConfigDto> getAllMotherboardConfigs(){
         log.info("getAllMotherboardConfigs");
-        var configs = motherboardConfigClient.getAll().getContent();
+        var configs = motherboardClient.getConfigs().getContent();
         log.info("size = {}", configs.size());
 
         return configs;
@@ -39,7 +39,7 @@ public class MotherboardConfigController {
     @PostMapping("/motherboard-config/create")
     public MotherboardConfigDto create(MotherboardConfigDto config){
         log.info("createMotherboardConfig");
-        var createdConfig = motherboardConfigClient.create(config).getContent();
+        var createdConfig = motherboardClient.createConfig(config).getContent();
         log.info("config {}", createdConfig);
 
         return createdConfig;

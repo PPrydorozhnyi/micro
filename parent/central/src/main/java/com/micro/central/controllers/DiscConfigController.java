@@ -1,6 +1,6 @@
 package com.micro.central.controllers;
 
-import com.micro.central.feigns.DiscConfigClient;
+import com.micro.central.feigns.DiscClient;
 import com.micro.data.models.DiscConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,12 +16,12 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class DiscConfigController {
 
-    private final DiscConfigClient discConfigClient;
+    private final DiscClient discClient;
 
     @GetMapping("/disc-config/{id}")
     public DiscConfigDto getDiscConfigById(@PathVariable Long id){
         log.info("GetDiscConfigById {}", id);
-        var config = discConfigClient.getById(id).getContent();
+        var config = discClient.getConfigById(id).getContent();
         log.info("config {}", config);
 
         return config;
@@ -30,7 +30,7 @@ public class DiscConfigController {
     @GetMapping("/disc-configs")
     public Collection<DiscConfigDto> getAllDiscConfigs(){
         log.info("getAllDiscConfigs");
-        var configs = discConfigClient.getAll().getContent();
+        var configs = discClient.getConfigs().getContent();
         log.info("size = {}", configs.size());
 
         return configs;
@@ -39,7 +39,7 @@ public class DiscConfigController {
     @PostMapping("/disc-config/create")
     public DiscConfigDto create(DiscConfigDto config){
         log.info("createDiscConfig");
-        var createdConfig = discConfigClient.create(config).getContent();
+        var createdConfig = discClient.createConfig(config).getContent();
         log.info("config {}", createdConfig);
 
         return createdConfig;

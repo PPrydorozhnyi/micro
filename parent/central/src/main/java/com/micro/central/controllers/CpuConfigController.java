@@ -1,6 +1,6 @@
 package com.micro.central.controllers;
 
-import com.micro.central.feigns.CpuConfigClient;
+import com.micro.central.feigns.CpuClient;
 import com.micro.data.models.CPUConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,12 +16,12 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class CpuConfigController {
 
-    private final CpuConfigClient cpuConfigClient;
+    private final CpuClient cpuClient;
 
     @GetMapping("/cpu-config/{id}")
     public CPUConfigDto getCpuConfigById(@PathVariable Long id){
         log.info("GetCpuConfigById {}", id);
-        var config = cpuConfigClient.getById(id).getContent();
+        var config = cpuClient.getConfigById(id).getContent();
         log.info("config {}", config);
 
         return config;
@@ -30,7 +30,7 @@ public class CpuConfigController {
     @GetMapping("/cpu-configs")
     public Collection<CPUConfigDto> getAllCpuConfigs(){
         log.info("getAllCpuConfigs");
-        var configs = cpuConfigClient.getAll().getContent();
+        var configs = cpuClient.getConfigs().getContent();
         log.info("size = {}", configs.size());
 
         return configs;
@@ -39,7 +39,7 @@ public class CpuConfigController {
     @PostMapping("/cpu-config/create")
     public CPUConfigDto create(CPUConfigDto config){
         log.info("createCpuConfig");
-        var createdConfig = cpuConfigClient.create(config).getContent();
+        var createdConfig = cpuClient.createConfig(config).getContent();
         log.info("config {}", createdConfig);
 
         return createdConfig;

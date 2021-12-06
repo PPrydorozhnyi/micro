@@ -1,6 +1,6 @@
 package com.micro.central.controllers;
 
-import com.micro.central.feigns.GpuConfigClient;
+import com.micro.central.feigns.GpuClient;
 import com.micro.data.models.GPUConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,12 +16,12 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class GpuConfigController {
 
-    private final GpuConfigClient gpuConfigClient;
+    private final GpuClient gpuClient;
 
     @GetMapping("/gpu-config/{id}")
     public GPUConfigDto getGpuConfigById(@PathVariable Long id){
         log.info("GetGpuConfigById {}", id);
-        var config = gpuConfigClient.getById(id).getContent();
+        var config = gpuClient.getConfigById(id).getContent();
         log.info("config {}", config);
 
         return config;
@@ -30,7 +30,7 @@ public class GpuConfigController {
     @GetMapping("/gpu-configs")
     public Collection<GPUConfigDto> getAllGpuConfigs(){
         log.info("getAllGpuConfigs");
-        var configs = gpuConfigClient.getAll().getContent();
+        var configs = gpuClient.getConfigs().getContent();
         log.info("size = {}", configs.size());
 
         return configs;
@@ -39,7 +39,7 @@ public class GpuConfigController {
     @PostMapping("/gpu-config/create")
     public GPUConfigDto create(GPUConfigDto config){
         log.info("createGpuConfig");
-        var createdConfig = gpuConfigClient.create(config).getContent();
+        var createdConfig = gpuClient.createConfig(config).getContent();
         log.info("config {}", createdConfig);
 
         return createdConfig;
