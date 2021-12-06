@@ -6,16 +6,17 @@ import com.micro.cpu.entity.enums.LoadSharing;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Data
-@Table
-public class CPU {
+@Table(name = "cpu_history")
+public class CPUHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private Instant time;
 
     private Boolean overclocking;
 
