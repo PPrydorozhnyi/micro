@@ -4,19 +4,18 @@ import com.micro.gpu.entity.enums.FanOperatingMode;
 import com.micro.gpu.entity.enums.LoadQuantity;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Data
-public class GPU {
+@Table(name = "gpu_history")
+public class GPUHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private Instant time;
 
     private Double temperature;
 
