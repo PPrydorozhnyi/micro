@@ -18,7 +18,7 @@ spec:
       containers:
         - name: currency
           imagePullPolicy: Always
-          image: drakus73/micro:ip-service
+          image: drakus73/micro:currency
           ports:
             - containerPort: 7091
               name: currency-port
