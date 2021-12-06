@@ -16,7 +16,7 @@ create table disc_config
 (
     id bigserial primary key,
     name VARCHAR(20),
-    temperature DECIMAL,
-    speed DECIMAL,
-    integrity DECIMAL
+    temperature BOOLEAN,
+    speed BOOLEAN,
+    integrity BOOLEAN
 );

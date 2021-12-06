@@ -10,15 +10,15 @@ create table gpu_history
     id bigserial primary key,
     time TIMESTAMP,
     temperature DOUBLE PRECISION,
-    fanOperatingMode fanOperatingMode,
-    loadQuantity loadQuantity
+    fan_operating_mode fanOperatingMode,
+    load_quantity loadQuantity
 );
 
 create table gpu_config
 (
     id bigserial primary key,
     name VARCHAR(20),
-    temperature DECIMAL,
-    fanOperatingMode DECIMAL,
-    loadQuantity DECIMAL
+    temperature BOOLEAN,
+    fan_operating_mode BOOLEAN,
+    load_quantity BOOLEAN
 );

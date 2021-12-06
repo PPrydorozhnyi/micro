@@ -6,7 +6,7 @@ create table motherboard_history
     id bigserial primary key,
     time TIMESTAMP,
     components jsonb,
-    freePorts jsonb
+    free_ports jsonb
 );
 
 create table motherboard_config
@@ -14,5 +14,5 @@ create table motherboard_config
     id bigserial primary key,
     name VARCHAR(20),
     components DECIMAL,
-    freePorts DECIMAL
+    free_ports DECIMAL
 );
