@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: disk
+  labels:
+    app: disk
+spec:
+  selector:
+    matchLabels:
+      app: disk
+  replicas: 1
+  template:
+    metadata:
+      name: disk
+      labels:
+        app: disk
+    spec:
+      containers:
+        - name: disk
+          imagePullPolicy: Always
+          image: drakus73/micro:disk
+          ports:
+            - containerPort: 8091
+              name: disk-port

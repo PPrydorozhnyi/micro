@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: central
+  labels:
+    app: central
+spec:
+  selector:
+    matchLabels:
+      app: central
+  replicas: 1
+  template:
+    metadata:
+      name: central
+      labels:
+        app: central
+    spec:
+      containers:
+        - name: central
+          imagePullPolicy: Always
+          image: drakus73/micro:central
+          ports:
+            - containerPort: 7092
+              name: central-port

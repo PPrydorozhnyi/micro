@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: motherboard
+  labels:
+    app: motherboard
+spec:
+  type: ClusterIP
+  selector:
+    app: motherboard
+  ports:
+    - port: 8093
+      protocol: TCP
+      targetPort: 8093

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpu
+  labels:
+    app: cpu
+spec:
+  selector:
+    matchLabels:
+      app: cpu
+  replicas: 1
+  template:
+    metadata:
+      name: cpu
+      labels:
+        app: cpu
+    spec:
+      containers:
+        - name: cpu
+          imagePullPolicy: Always
+          image: drakus73/micro:cpu
+          ports:
+            - containerPort: 8090
+              name: cpu-port

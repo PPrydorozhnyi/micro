@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motherboard
+  labels:
+    app: motherboard
+spec:
+  selector:
+    matchLabels:
+      app: motherboard
+  replicas: 1
+  template:
+    metadata:
+      name: motherboard
+      labels:
+        app: motherboard
+    spec:
+      containers:
+        - name: motherboard
+          imagePullPolicy: Always
+          image: drakus73/micro:motherboard
+          ports:
+            - containerPort: 8093
+              name: motherboard-port
