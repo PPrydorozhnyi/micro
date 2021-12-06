@@ -12,7 +12,7 @@ import java.time.Instant;
 @Table(name = "gpu_history")
 public class GPUHistory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Instant time;

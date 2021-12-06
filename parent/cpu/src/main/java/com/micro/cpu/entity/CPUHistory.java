@@ -13,7 +13,7 @@ import java.time.Instant;
 @Table(name = "cpu_history")
 public class CPUHistory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Instant time;

@@ -1,15 +1,9 @@
-package com.micro.gpu.entity;
+package com.micro.data.models;
 
 import lombok.Data;
 
-import javax.persistence.*;
-
-@Entity
 @Data
-@Table(name = "gpu_config")
-public class GPUConfig {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class GPUConfigDto {
     private Long id;
 
     private String name;

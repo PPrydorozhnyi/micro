@@ -1,4 +1,4 @@
-package com.micro.motherboard.entity.enums;
+package com.micro.data.models.enums;
 
 public enum Component {
     CPU,

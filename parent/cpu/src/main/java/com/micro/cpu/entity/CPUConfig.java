@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "cpu_config")
 public class CPUConfig {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

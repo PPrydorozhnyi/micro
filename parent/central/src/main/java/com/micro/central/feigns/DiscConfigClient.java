@@ -1,6 +1,6 @@
 package com.micro.central.feigns;
 
-import com.micro.data.models.CPUConfigDto;
+import com.micro.data.models.DiscConfigDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "cpu", url = "http://localhost:8090")
-public interface CpuClient {
+@FeignClient(name = "disc-config", url = "http://localhost:8091")
+public interface DiscConfigClient {
 
-  @GetMapping("/cpu-config")
-  CollectionModel<CPUConfigDto> getAll();
+    @GetMapping("/disc-config")
+    CollectionModel<DiscConfigDto> getAll();
 
-  @GetMapping("/cpu-config/{id}")
-  EntityModel<CPUConfigDto> getById(@PathVariable long id);
+    @GetMapping("/disc-config/{id}")
+    EntityModel<DiscConfigDto> getById(@PathVariable long id);
 
-  @PostMapping("/cpu-config")
-  EntityModel<CPUConfigDto> create(@RequestBody CPUConfigDto config);
-
+    @PostMapping("/disc-config")
+    EntityModel<DiscConfigDto> create(@RequestBody DiscConfigDto config);
 }

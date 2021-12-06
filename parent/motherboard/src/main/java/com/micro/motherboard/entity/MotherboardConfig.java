@@ -12,7 +12,7 @@ import javax.persistence.*;
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class MotherboardConfig {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

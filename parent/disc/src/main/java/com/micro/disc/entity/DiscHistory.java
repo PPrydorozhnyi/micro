@@ -11,7 +11,7 @@ import java.time.Instant;
 @Table(name = "disc_history")
 public class DiscHistory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Instant time;

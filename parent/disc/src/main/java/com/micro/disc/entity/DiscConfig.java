@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "disc_config")
 public class DiscConfig {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
