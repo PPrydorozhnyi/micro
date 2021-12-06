@@ -3,19 +3,18 @@ package com.micro.disc.entity;
 import com.micro.disc.entity.enums.Integrity;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Data
-public class Disc {
+@Table(name = "disc_history")
+public class DiscHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private Instant time;
 
     private Double speed;
 

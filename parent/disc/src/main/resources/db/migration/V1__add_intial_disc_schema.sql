@@ -3,11 +3,20 @@ set search_path to disc;
 
 create type integrity as enum ('DAMAGED', 'WHOLE');
 
-create table disc
+create table disc_history
 (
     id bigserial primary key,
-    name VARCHAR(20),
+    time TIMESTAMP,
     temperature DOUBLE PRECISION,
     speed DOUBLE PRECISION,
     integrity integrity
+);
+
+create table disc_config
+(
+    id bigserial primary key,
+    name VARCHAR(20),
+    temperature DECIMAL,
+    speed DECIMAL,
+    integrity DECIMAL
 );
