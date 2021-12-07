@@ -20,6 +20,8 @@ public class CpuMaintenanceService {
     final var config = cpuConfigRepository.findById(configId)
         .orElseThrow(() -> new RuntimeException("Incorrect config id " + configId));
     final var cpuHistory = new CPUHistory();
+    cpuHistory.setConfigId(configId);
+    cpuHistory.setConfigName(config.getName());
     var needToSetPrice = false;
 
     if (config.isFrequency()) {

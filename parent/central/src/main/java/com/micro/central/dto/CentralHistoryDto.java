@@ -1,8 +1,7 @@
 package com.micro.central.dto;
 
-import lombok.Data;
-
 import java.time.Instant;
+import lombok.Data;
 
 @Data
 public class CentralHistoryDto {
@@ -17,4 +16,8 @@ public class CentralHistoryDto {
     private Long gpuId;
 
     private Long motherboardId;
+
+    private long configId;
+
+    private String configName;
 }
