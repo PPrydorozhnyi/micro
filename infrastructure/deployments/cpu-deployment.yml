@@ -44,7 +44,7 @@ spec:
                   name: db-creds
                   key: host
             - name: DB_PORT
-                valueFrom:
-                  secretKeyRef:
-                    name: db-creds
-                    key: port
+              valueFrom:
+                secretKeyRef:
+                  name: db-creds
+                  key: port
