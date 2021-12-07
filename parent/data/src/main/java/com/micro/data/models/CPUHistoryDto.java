@@ -3,16 +3,13 @@ package com.micro.data.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.micro.data.models.enums.LoadQuantity;
 import com.micro.data.models.enums.LoadSharing;
-import java.time.Instant;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CPUHistoryDto {
-
-  private long id;
-
-  private Instant time;
+public class CPUHistoryDto extends GeneralHistoryResponse {
 
   private Boolean overclocking;
 
@@ -23,9 +20,5 @@ public class CPUHistoryDto {
   private LoadSharing loadSharing;
 
   private LoadQuantity loadQuantity;
-
-  private double estimatedPrice;
-
-  private double actualPrice;
 
 }

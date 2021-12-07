@@ -1,18 +1,16 @@
 package com.micro.data.models;
 
 import com.micro.data.models.enums.Component;
-import lombok.Data;
-
-import java.time.Instant;
 import java.util.List;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class MotherboardHistoryDto {
-    private Long id;
+public class MotherboardHistoryDto extends GeneralHistoryResponse {
 
-    private Instant time;
+  private List<Component> components;
 
-    private List<Component> components;
+  private List<Component> freePorts;
 
-    private List<Integer> freePorts;
 }
