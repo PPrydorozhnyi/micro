@@ -22,3 +22,10 @@ kubectl apply -f infrastructure/deployments/motherboard-deployment.yml
 kubectl scale deployment currency --replicas=0
 
 kubectl apply -f infrastructure/roles/service-discovery-rolebinding.yml
+
+kubectl create secret generic db-creds \
+  --from-literal user=admin \
+  --from-literal password=1234 \
+  --from-literal host=12.12.12.12 \
+  --from-literal database=database \
+  --from-literal port=5049
