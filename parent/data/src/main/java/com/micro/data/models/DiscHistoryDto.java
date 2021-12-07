@@ -1,13 +1,15 @@
 package com.micro.data.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.micro.data.models.enums.Integrity;
 import lombok.Data;
 
 import java.time.Instant;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DiscHistoryDto {
-    private Long id;
+    private long id;
 
     private Instant time;
 
@@ -16,4 +18,8 @@ public class DiscHistoryDto {
     private Double temperature;
 
     private Integrity integrity;
+
+    private double estimatedPrice;
+
+    private double actualPrice;
 }

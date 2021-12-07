@@ -5,9 +5,7 @@ import com.micro.cpu.repository.CPUConfigRepository;
 import com.micro.cpu.repository.CPUHistoryRepository;
 import com.micro.data.models.enums.LoadQuantity;
 import com.micro.data.models.enums.LoadSharing;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Random;
+import com.micro.data.utils.MicroUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +15,6 @@ public class CpuMaintenanceService {
 
   private final CPUConfigRepository cpuConfigRepository;
   private final CPUHistoryRepository cpuHistoryRepository;
-  private final Random random = new Random();
 
   public CPUHistory proceedConfig(long configId) {
     final var config = cpuConfigRepository.findById(configId)
@@ -47,7 +44,7 @@ public class CpuMaintenanceService {
 
     if (config.isOverclocking()) {
       needToSetPrice = true;
-      cpuHistory.setOverclocking(random.nextBoolean());
+      cpuHistory.setOverclocking(MicroUtils.generateBoolean());
     }
 
     if (needToSetPrice) {
@@ -58,28 +55,23 @@ public class CpuMaintenanceService {
   }
 
   private double generateFrequency() {
-    return generateRandomInRange(1.2, 5);
+    return MicroUtils.generateRandomInRange(1.2, 5);
   }
 
   private LoadQuantity generateLoadQuantity() {
-    return LoadQuantity.values()[random.nextInt(0, 3)];
+    return LoadQuantity.values()[MicroUtils.generateRandomIntTo(3)];
   }
 
   private LoadSharing generateLoadSharing() {
-    return LoadSharing.values()[random.nextInt(0, 3)];
+    return LoadSharing.values()[MicroUtils.generateRandomIntTo(3)];
   }
 
   private double generateTemperature() {
-    return generateRandomInRange(30, 80);
+    return MicroUtils.generateRandomInRange(30, 80);
   }
 
   private double generatePrice() {
-    return generateRandomInRange(5, 20);
-  }
-
-  private double generateRandomInRange(double min, double excludedMax) {
-    return BigDecimal.valueOf(random.nextDouble(min, excludedMax))
-        .setScale(2, RoundingMode.HALF_UP).doubleValue();
+    return MicroUtils.generateRandomInRange(5, 20);
   }
 
 }
