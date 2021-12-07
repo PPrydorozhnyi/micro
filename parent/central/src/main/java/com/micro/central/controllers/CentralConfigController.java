@@ -18,7 +18,7 @@ public class CentralConfigController {
     
     private final CentralConfigMapper mapper;
 
-    @GetMapping("/central-config/{id}")
+    @GetMapping("/central-configs/{id}")
     public CentralConfigDto getCentralConfigById(@PathVariable Long id){
         log.info("GetCentralConfigById {}", id);
         var config = mapper.map(centralConfigService.getConfigById(id));
