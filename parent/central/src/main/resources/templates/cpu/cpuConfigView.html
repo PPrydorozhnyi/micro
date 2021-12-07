@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Config page</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-10">
+            <h2>Config</h2>
+            <div class="panel panel-default">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td th:text="${config.name}"></td>
+                    </tr>
+                    <tr>
+                        <td>Overclocking</td>
+                        <td th:text="${config.overclocking}"></td>
+                    </tr>
+                    <tr>
+                        <td>Frequency</td>
+                        <td th:text="${config.frequency}"></td>
+                    </tr>
+                    <tr>
+                        <td>Temperature</td>
+                        <td th:text="${config.temperature}"></td>
+                    </tr>
+                    <tr>
+                        <td>Load Sharing</td>
+                        <td th:text="${config.loadSharing}"></td>
+                    </tr>
+                    <tr>
+                        <td>Load Quantity</td>
+                        <td th:text="${config.loadQuantity}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-2 margin-view">
+            <form method="GET" action="/cpu-configs" class="form-signin">
+                <button class="btn btn btn-info btn-block" type="submit">View all configs</button>
+            </form>
+            <form action="#" th:action="@{'/cpu-config/' + ${config.id}}" th:method="delete" class="form-signin">
+                <input type="hidden" name="_method" value="delete"/>
+                <button class="btn btn btn-danger btn-block" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    <h5 th:text="${error}"></h5>
+</div>
+</body>
+</html>
