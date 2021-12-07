@@ -41,28 +41,28 @@ public class MaintenanceService {
 
     if (centralConfig.getCpuId() != null) {
       final var historyDto = cpuClient.proceedMaintenance(centralConfig.getCpuId());
-      historyDto.setEstimatedPrice(convertToRate(historyDto.getActualPrice(), currencyRate.rate()));
+      historyDto.setEstimatedPrice(convertToRate(historyDto.getEstimatedPrice(), currencyRate.rate()));
       centralHistory.setCpuId(historyDto.getId());
       resultDto.setCpuHistory(historyDto);
     }
 
     if (centralConfig.getDiscId() != null) {
       final var historyDto = discClient.proceedMaintenance(centralConfig.getDiscId());
-      historyDto.setEstimatedPrice(convertToRate(historyDto.getActualPrice(), currencyRate.rate()));
+      historyDto.setEstimatedPrice(convertToRate(historyDto.getEstimatedPrice(), currencyRate.rate()));
       centralHistory.setDiscId(historyDto.getId());
       resultDto.setDiscHistory(historyDto);
     }
 
     if (centralConfig.getGpuId() != null) {
       final var historyDto = gpuClient.proceedMaintenance(centralConfig.getGpuId());
-      historyDto.setEstimatedPrice(convertToRate(historyDto.getActualPrice(), currencyRate.rate()));
+      historyDto.setEstimatedPrice(convertToRate(historyDto.getEstimatedPrice(), currencyRate.rate()));
       centralHistory.setGpuId(historyDto.getId());
       resultDto.setGpuHistory(historyDto);
     }
 
     if (centralConfig.getMotherboardId() != null) {
       final var historyDto = motherboardClient.proceedMaintenance(centralConfig.getMotherboardId());
-      historyDto.setEstimatedPrice(convertToRate(historyDto.getActualPrice(), currencyRate.rate()));
+      historyDto.setEstimatedPrice(convertToRate(historyDto.getEstimatedPrice(), currencyRate.rate()));
       centralHistory.setMotherboardId(historyDto.getId());
       resultDto.setMotherboardHistoryDto(historyDto);
     }
