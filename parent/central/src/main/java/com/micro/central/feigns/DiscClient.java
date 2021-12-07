@@ -1,5 +1,6 @@
 package com.micro.central.feigns;
 
+import com.micro.data.controllers.InnerDiscMaintenanceController;
 import com.micro.data.models.DiscConfigDto;
 import com.micro.data.models.DiscHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "disc", url = "http://localhost:8091")
-public interface DiscClient {
+public interface DiscClient extends InnerDiscMaintenanceController {
 
     @GetMapping("/disc-config")
     CollectionModel<DiscConfigDto> getConfigs();
