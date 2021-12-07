@@ -37,14 +37,14 @@ public class DeletionService {
     }
 
     public void deleteDiscConfigById(long id){
-        centralConfigRepository.findCentralConfigByGpuId(id)
+        centralConfigRepository.findCentralConfigByDiscId(id)
                 .ifPresentOrElse(
                         s -> {throw new RuntimeException(s.getDiscId().toString());},
                         () -> discClient.deleteConfig(id));
     }
 
     public void deleteCpuConfigById(long id){
-        centralConfigRepository.findCentralConfigByGpuId(id)
+        centralConfigRepository.findCentralConfigByCpuId(id)
                 .ifPresentOrElse(
                         s -> {throw new RuntimeException(s.getCpuId().toString());},
                         () -> cpuClient.deleteConfig(id));

@@ -58,4 +58,12 @@ public class CentralConfigController {
 
         return "redirect:/central-config/" + createdConfig.getId();
     }
+
+    @PostMapping("/central-config/{id}")
+    public String deleteConfig(@PathVariable long id){
+        log.info("delete centralConfig with id {}", id);
+        deleteConfig(id);
+
+        return "redirect:/central-configs";
+    }
 }

@@ -33,4 +33,8 @@ public class CentralConfigService {
     public CentralConfig createConfig(CentralConfigDto centralConfigDto){
         return centralConfigRepository.save(mapper.map(centralConfigDto));
     }
+
+    public void deleteConfigById(long id){
+        centralConfigRepository.deleteById(id);
+    }
 }
