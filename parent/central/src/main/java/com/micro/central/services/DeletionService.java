@@ -27,7 +27,6 @@ public class DeletionService {
                 .ifPresentOrElse(
                         s -> {throw new RuntimeException(s.getMotherboardId().toString());},
                         () -> motherboardClient.deleteConfig(id));
-
     }
 
     public void deleteGpuConfigById(long id){
@@ -35,5 +34,19 @@ public class DeletionService {
                 .ifPresentOrElse(
                         s -> {throw new RuntimeException(s.getGpuId().toString());},
                         () -> gpuClient.deleteConfig(id));
+    }
+
+    public void deleteDiscConfigById(long id){
+        centralConfigRepository.findCentralConfigByGpuId(id)
+                .ifPresentOrElse(
+                        s -> {throw new RuntimeException(s.getDiscId().toString());},
+                        () -> discClient.deleteConfig(id));
+    }
+
+    public void deleteCpuConfigById(long id){
+        centralConfigRepository.findCentralConfigByGpuId(id)
+                .ifPresentOrElse(
+                        s -> {throw new RuntimeException(s.getCpuId().toString());},
+                        () -> cpuClient.deleteConfig(id));
     }
 }

@@ -3,7 +3,6 @@ package com.micro.central.feigns;
 import com.micro.data.controllers.InnerGpuMaintenanceController;
 import com.micro.data.models.GPUConfigDto;
 import com.micro.data.models.GPUHistoryDto;
-import com.micro.data.models.MotherboardConfigDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
