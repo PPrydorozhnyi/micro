@@ -9,4 +9,4 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 7090
+      targetPort: 7092
