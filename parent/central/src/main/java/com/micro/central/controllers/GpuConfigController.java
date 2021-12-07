@@ -23,7 +23,7 @@ public class GpuConfigController {
 
         model.addAttribute("config", config);
 
-        return "gpu/gpuView";
+        return "gpu/gpuConfigView";
     }
 
     @GetMapping("/gpu-configs")
@@ -34,14 +34,14 @@ public class GpuConfigController {
 
         model.addAttribute("configs", configs);
 
-        return "gpu/gpus";
+        return "gpu/gpuConfigs";
     }
 
     public String create(Model model){
         log.info("createGpuConfig");
         model.addAttribute("config", new GPUConfigDto());
 
-        return "gpu/gpuCreate";
+        return "gpu/gpuConfigCreate";
     }
 
     @PostMapping("/gpu-config/create")

@@ -23,7 +23,7 @@ public class MotherboardConfigController {
 
         model.addAttribute("config", config);
 
-        return "motherboard/motherboardView";
+        return "motherboard/motherboardConfigView";
     }
 
     @GetMapping("/motherboard-configs")
@@ -34,14 +34,14 @@ public class MotherboardConfigController {
 
         model.addAttribute("configs", configs);
 
-        return "motherboard/motherboards";
+        return "motherboard/motherboardConfigs";
     }
 
     public String create(Model model){
         log.info("createMotherboardConfig");
         model.addAttribute("config", new MotherboardConfigDto());
 
-        return "motherboard/motherboardCreate";
+        return "motherboard/motherboardConfigCreate";
     }
 
     @PostMapping("/motherboard-config/create")

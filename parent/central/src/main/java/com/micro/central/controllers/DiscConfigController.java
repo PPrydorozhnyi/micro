@@ -23,7 +23,7 @@ public class DiscConfigController {
 
         model.addAttribute("config", config);
 
-        return "disc/discView";
+        return "disc/discConfigView";
     }
 
     @GetMapping("/disc-configs")
@@ -34,14 +34,14 @@ public class DiscConfigController {
 
         model.addAttribute("configs", configs);
 
-        return "disc/discs";
+        return "disc/discConfigs";
     }
 
     public String create(Model model){
         log.info("createDiscConfig");
         model.addAttribute("config", new DiscConfigDto());
 
-        return "disc/discCreate";
+        return "disc/discConfigCreate";
     }
 
     @PostMapping("/disc-config/create")

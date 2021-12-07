@@ -7,7 +7,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Slf4j
 @Controller
@@ -26,7 +29,7 @@ public class CentralConfigController {
 
         model.addAttribute("config", config);
 
-        return "central/centralView";
+        return "central/centralConfigView";
     }
 
     @GetMapping("/central-configs")
@@ -37,14 +40,14 @@ public class CentralConfigController {
 
         model.addAttribute("configs", configs);
 
-        return "central/centrals";
+        return "central/centralConfigs";
     }
 
     public String create(Model model){
         log.info("createCentralConfig");
         model.addAttribute("config", new CentralConfigDto());
 
-        return "central/centralCreate";
+        return "central/centralConfigCreate";
     }
 
     @PostMapping("/central-config/create")
