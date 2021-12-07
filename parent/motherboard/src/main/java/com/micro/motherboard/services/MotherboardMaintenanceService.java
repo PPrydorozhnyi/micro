@@ -20,24 +20,28 @@ public class MotherboardMaintenanceService {
   public MotherboardHistory proceedConfig(long configId) {
     final var config = configRepository.findById(configId)
         .orElseThrow(() -> new RuntimeException("Incorrect config id " + configId));
-    final var cpuHistory = new MotherboardHistory();
+    final var history = new MotherboardHistory();
+
+    history.setConfigId(config.getId());
+    history.setConfigName(config.getName());
+
     var needToSetPrice = false;
 
     if (config.isComponents()) {
       needToSetPrice = true;
-      cpuHistory.setComponents(generateComponents());
+      history.setComponents(generateComponents());
     }
 
     if (config.isFreePorts()) {
       needToSetPrice = true;
-      cpuHistory.setFreePorts(generateAvailableComponents());
+      history.setFreePorts(generateAvailableComponents());
     }
 
     if (needToSetPrice) {
-      cpuHistory.setEstimatedPrice(generatePrice());
+      history.setEstimatedPrice(generatePrice());
     }
 
-    return historyRepository.save(cpuHistory);
+    return historyRepository.save(history);
   }
 
   private List<Component> generateAvailableComponents() {

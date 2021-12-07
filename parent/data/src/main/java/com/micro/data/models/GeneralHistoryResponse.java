@@ -14,4 +14,8 @@ public class GeneralHistoryResponse {
 
   private double actualPrice;
 
+  private long configId;
+
+  private String configName;
+
 }

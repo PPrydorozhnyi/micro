@@ -38,6 +38,8 @@ public class MaintenanceService {
     resultDto.setRate(currencyRate);
 
     var centralHistory = new CentralHistory();
+    centralHistory.setConfigId(configId);
+    centralHistory.setConfigName(centralConfig.getName());
 
     if (centralConfig.getCpuId() != null) {
       final var historyDto = cpuClient.proceedMaintenance(centralConfig.getCpuId());

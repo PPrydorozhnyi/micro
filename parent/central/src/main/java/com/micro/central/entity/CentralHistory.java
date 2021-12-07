@@ -15,7 +15,7 @@ public class CentralHistory {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private long id;
 
   private Instant time;
 
@@ -26,5 +26,9 @@ public class CentralHistory {
   private Long gpuId;
 
   private Long motherboardId;
+
+  private long configId;
+
+  private String configName;
 
 }

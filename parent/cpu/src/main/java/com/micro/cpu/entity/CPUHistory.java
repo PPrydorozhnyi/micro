@@ -45,4 +45,8 @@ public class CPUHistory {
 
   private double actualPrice = 0;
 
+  private long configId;
+
+  private String configName;
+
 }

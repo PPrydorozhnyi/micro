@@ -31,4 +31,8 @@ public class DiscHistory {
     private double estimatedPrice;
 
     private double actualPrice = 0;
+
+    private long configId;
+
+    private String configName;
 }

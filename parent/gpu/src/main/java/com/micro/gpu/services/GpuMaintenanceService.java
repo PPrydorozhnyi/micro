@@ -19,29 +19,31 @@ public class GpuMaintenanceService {
   public GPUHistory proceedConfig(long configId) {
     final var config = configRepository.findById(configId)
         .orElseThrow(() -> new RuntimeException("Incorrect config id " + configId));
-    final var cpuHistory = new GPUHistory();
+    final var history = new GPUHistory();
+    history.setConfigId(config.getId());
+    history.setConfigName(config.getName());
     var needToSetPrice = false;
 
     if (config.isFanOperatingMode()) {
       needToSetPrice = true;
-      cpuHistory.setFanOperatingMode(generateFanOperatingMode());
+      history.setFanOperatingMode(generateFanOperatingMode());
     }
 
     if (config.isLoadQuantity()) {
       needToSetPrice = true;
-      cpuHistory.setLoadQuantity(generateLoadQuantity());
+      history.setLoadQuantity(generateLoadQuantity());
     }
 
     if (config.isTemperature()) {
       needToSetPrice = true;
-      cpuHistory.setTemperature(generateTemperature());
+      history.setTemperature(generateTemperature());
     }
 
     if (needToSetPrice) {
-      cpuHistory.setEstimatedPrice(generatePrice());
+      history.setEstimatedPrice(generatePrice());
     }
 
-    return historyRepository.save(cpuHistory);
+    return historyRepository.save(history);
   }
 
 

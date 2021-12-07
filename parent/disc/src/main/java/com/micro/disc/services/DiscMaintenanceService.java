@@ -19,6 +19,8 @@ public class DiscMaintenanceService {
     final var config = configRepository.findById(configId)
         .orElseThrow(() -> new RuntimeException("Incorrect config id " + configId));
     final var history = new DiscHistory();
+    history.setConfigId(configId);
+    history.setConfigName(config.getName());
     var needToSetPrice = false;
 
     if (config.isTemperature()) {
