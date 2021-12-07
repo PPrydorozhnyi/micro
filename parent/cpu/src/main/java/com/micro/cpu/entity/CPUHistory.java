@@ -25,7 +25,7 @@ public class CPUHistory {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private Instant time;
+  private Instant time = Instant.now();
 
   private Boolean overclocking;
 
