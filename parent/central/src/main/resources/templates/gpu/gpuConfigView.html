@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="col-2 margin-view">
-            <form method="GET" action="/motherboard-configs" class="form-signin">
+            <form method="GET" action="/gpu-configs" class="form-signin">
                 <button class="btn btn btn-info btn-block" type="submit">View all configs</button>
             </form>
             <form action="#" th:action="@{'/gpu-config/' + ${config.id}}" th:method="delete" class="form-signin">

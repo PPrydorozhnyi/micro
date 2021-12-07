@@ -59,7 +59,7 @@ public class GpuConfigController {
         return "redirect:/gpu-config/" + createdConfig.getId();
     }
 
-    @PostMapping("/motherboard-config/{id}")
+    @PostMapping("/gpu-config/{id}")
     public String deleteById(@PathVariable long id){
         try {
             deletionService.deleteGpuConfigById(id);
