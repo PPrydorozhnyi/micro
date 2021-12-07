@@ -1,5 +1,6 @@
 package com.micro.central.feigns;
 
+import com.micro.data.controllers.InnerMotherboardMaintenanceController;
 import com.micro.data.models.MotherboardConfigDto;
 import com.micro.data.models.MotherboardHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "motherboard", url = "http://localhost:8093")
-public interface MotherboardClient {
+public interface MotherboardClient extends InnerMotherboardMaintenanceController {
 
     @GetMapping("/motherboard-config")
     CollectionModel<MotherboardConfigDto> getConfigs();

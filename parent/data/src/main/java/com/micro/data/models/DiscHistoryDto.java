@@ -1,19 +1,19 @@
 package com.micro.data.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.micro.data.models.enums.Integrity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.time.Instant;
-
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class DiscHistoryDto {
-    private Long id;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class DiscHistoryDto extends GeneralHistoryResponse {
 
-    private Instant time;
+  private Double speed;
 
-    private Double speed;
+  private Double temperature;
 
-    private Double temperature;
+  private Integrity integrity;
 
-    private Integrity integrity;
 }

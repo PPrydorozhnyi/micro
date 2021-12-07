@@ -1,20 +1,21 @@
 package com.micro.data.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.micro.data.models.enums.FanOperatingMode;
 import com.micro.data.models.enums.LoadQuantity;
-import lombok.Data;
-
 import java.time.Instant;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class GPUHistoryDto {
-    private Long id;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class GPUHistoryDto extends GeneralHistoryResponse {
 
-    private Instant time;
+  private Double temperature;
 
-    private Double temperature;
+  private FanOperatingMode fanOperatingMode;
 
-    private FanOperatingMode fanOperatingMode;
+  private LoadQuantity loadQuantity;
 
-    private LoadQuantity loadQuantity;
 }
