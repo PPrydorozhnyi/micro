@@ -1,4 +1,4 @@
-package com.micro.central.service;
+package com.micro.central.services;
 
 import com.micro.central.dto.CentralHistoryDto;
 import com.micro.central.entity.CentralHistory;

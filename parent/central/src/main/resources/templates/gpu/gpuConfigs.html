@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Motherboard Configs</title>
+  <title>GPU Configs</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -36,11 +36,11 @@
 
 <div class="container" style="margin-top: 55px;">
   <div class="row">
-    <form cssClass="col-2 margin-table-view" method="GET" action="/motherboard-config/create" class="form-signin">
+    <form cssClass="col-2 margin-table-view" method="GET" action="/gpu-config/create" class="form-signin">
       <button class="btn btn btn-success" type="submit">Create config</button>
     </form>
     <div class="col-10">
-      <h2>Motherboard Configs</h2>
+      <h2>GPU Configs</h2>
       <table class="table table-bordered table-hover">
         <thead class="thead-dark">
         <tr>
@@ -49,7 +49,7 @@
         </thead>
         <tbody>
           <tr th:each="config : ${configs}">
-            <td><a th:href="@{'/motherboard-config/' + ${config.id}}" th:text="${config.name}" /></td>
+            <td><a th:href="@{'/gpu-config/' + ${config.id}}" th:text="${config.name}" /></td>
           </tr>
         </tbody>
       </table>

@@ -1,6 +1,7 @@
 package com.micro.central.controllers;
 
 import com.micro.central.feigns.GpuClient;
+import com.micro.central.services.DeletionService;
 import com.micro.data.models.GPUConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +16,18 @@ public class GpuConfigController {
 
     private final GpuClient gpuClient;
 
+    private final DeletionService deletionService;
+
     @GetMapping("/gpu-config/{id}")
-    public String getGpuConfigById(@PathVariable Long id, Model model){
+    public String getGpuConfigById(@PathVariable Long id, Model model, boolean error){
         log.info("GetGpuConfigById {}", id);
         var config = gpuClient.getConfigById(id).getContent();
         log.info("config {}", config);
 
         model.addAttribute("config", config);
+        
+        if(error)
+            model.addAttribute("error", "This config can't be deleted");
 
         return "gpu/gpuConfigView";
     }
@@ -51,5 +57,15 @@ public class GpuConfigController {
         log.info("config {}", createdConfig);
 
         return "redirect:/gpu-config/" + createdConfig.getId();
+    }
+
+    @PostMapping("/motherboard-config/{id}")
+    public String deleteById(@PathVariable long id){
+        try {
+            deletionService.deleteGpuConfigById(id);
+        } catch (RuntimeException ex){
+            return "redirect:/gpu-config/" + ex.getMessage() + "?error=true";
+        }
+        return "redirect:/gpu-configs";
     }
 }

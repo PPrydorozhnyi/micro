@@ -1,6 +1,7 @@
 package com.micro.central.controllers;
 
 import com.micro.central.feigns.MotherboardClient;
+import com.micro.central.services.DeletionService;
 import com.micro.data.models.MotherboardConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +16,18 @@ public class MotherboardConfigController {
 
     private final MotherboardClient motherboardClient;
 
+    private final DeletionService deletionService;
+
     @GetMapping("/motherboard-config/{id}")
-    public String getMotherboardConfigById(@PathVariable Long id, Model model){
+    public String getMotherboardConfigById(@PathVariable Long id, Model model, boolean error){
         log.info("GetMotherboardConfigById {}", id);
         var config = motherboardClient.getConfigById(id).getContent();
         log.info("config {}", config);
 
         model.addAttribute("config", config);
+
+        if(error)
+            model.addAttribute("error", "This config can't be deleted");
 
         return "motherboard/motherboardConfigView";
     }
@@ -51,5 +57,15 @@ public class MotherboardConfigController {
         log.info("config {}", createdConfig);
 
         return "redirect:/motherboard-config/" + createdConfig.getId();
+    }
+
+    @PostMapping("/motherboard-config/{id}")
+    public String deleteById(@PathVariable long id){
+        try {
+            deletionService.deleteMotherboardConfigById(id);
+        } catch (RuntimeException ex){
+            return "redirect:/motherboard-config/" + ex.getMessage() + "?error=true";
+        }
+        return "redirect:/motherboard-configs";
     }
 }

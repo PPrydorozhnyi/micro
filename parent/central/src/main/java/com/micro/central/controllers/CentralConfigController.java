@@ -2,7 +2,7 @@ package com.micro.central.controllers;
 
 import com.micro.central.dto.CentralConfigDto;
 import com.micro.central.mappers.CentralConfigMapper;
-import com.micro.central.service.CentralConfigService;
+import com.micro.central.services.CentralConfigService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

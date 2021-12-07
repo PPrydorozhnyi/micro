@@ -1,7 +1,7 @@
 package com.micro.central.controllers;
 
 import com.micro.central.mappers.CentralHistoryMapper;
-import com.micro.central.service.CentralHistoryService;
+import com.micro.central.services.CentralHistoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

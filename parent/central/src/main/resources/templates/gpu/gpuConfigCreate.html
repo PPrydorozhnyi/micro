@@ -11,8 +11,8 @@
 <body>
 
 <div class="container">
-    <h2>Create motherboard config</h2>
-    <form action="/motherboard-config/create" method="POST" th:object="${config}" class="form-horizontal form-signin" >
+    <h2>Create GPU config</h2>
+    <form action="/gpu-config/create" method="POST" th:object="${config}" class="form-horizontal form-signin" >
         <div class="form-group">
             <label class="control-label col-sm-2">Name:</label>
             <div class="col-sm-8">
@@ -22,14 +22,21 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
                 <div class="checkbox">
-                    <label th:for="${#ids.next('components')}"><input type="checkbox" th:field="*{components}"> Components</label>
+                    <label th:for="${#ids.next('temperature')}"><input type="checkbox" th:field="*{temperature}"> Temperature</label>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
                 <div class="checkbox">
-                    <label th:for="${#ids.next('freePorts')}"><input type="checkbox" th:field="*{freePorts}"> Free Ports</label>
+                    <label th:for="${#ids.next('fanOperatingMode')}"><input type="checkbox" th:field="*{fanOperatingMode}"> Fan Operating Mode</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <div class="checkbox">
+                    <label th:for="${#ids.next('loadQuantity')}"><input type="checkbox" th:field="*{loadQuantity}"> Load Quantity</label>
                 </div>
             </div>
         </div>

@@ -25,12 +25,16 @@
                         <td th:text="${config.name}"></td>
                     </tr>
                     <tr>
-                        <td>Components</td>
-                        <td th:text="${config.components}"></td>
+                        <td>Temperature</td>
+                        <td th:text="${config.temperature}"></td>
                     </tr>
                     <tr>
-                        <td>Free Ports</td>
-                        <td th:text="${config.freePorts}"></td>
+                        <td>Fan Operating Mode</td>
+                        <td th:text="${config.fanOperatingMode}"></td>
+                    </tr>
+                    <tr>
+                        <td>Load Quantity</td>
+                        <td th:text="${config.loadQuantity}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -40,7 +44,7 @@
             <form method="GET" action="/motherboard-configs" class="form-signin">
                 <button class="btn btn btn-info btn-block" type="submit">View all configs</button>
             </form>
-            <form action="#" th:action="@{'/motherboard-config/' + ${config.id}}" th:method="delete" class="form-signin">
+            <form action="#" th:action="@{'/gpu-config/' + ${config.id}}" th:method="delete" class="form-signin">
                 <input type="hidden" name="_method" value="delete"/>
                 <button class="btn btn btn-danger btn-block" type="submit">Delete</button>
             </form>
