@@ -18,15 +18,21 @@ import org.hibernate.annotations.TypeDef;
 @Table(name = "motherboard_history")
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class MotherboardHistory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private Instant time;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Type(type = "jsonb")
-    private List<Component> components;
+  private Instant time = Instant.now();
 
-    @Type(type = "jsonb")
-    private List<Component> freePorts;
+  @Type(type = "jsonb")
+  private List<Component> components;
+
+  @Type(type = "jsonb")
+  private List<Component> freePorts;
+
+  private double estimatedPrice;
+
+  private double actualPrice = 0;
+
 }

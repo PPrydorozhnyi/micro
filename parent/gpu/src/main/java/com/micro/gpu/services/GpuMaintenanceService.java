@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GpuMaintenanceService {
 
-  private final GPUConfigRepository cpuConfigRepository;
-  private final GPUHistoryRepository cpuHistoryRepository;
+  private final GPUConfigRepository configRepository;
+  private final GPUHistoryRepository historyRepository;
 
   public GPUHistory proceedConfig(long configId) {
-    final var config = cpuConfigRepository.findById(configId)
+    final var config = configRepository.findById(configId)
         .orElseThrow(() -> new RuntimeException("Incorrect config id " + configId));
     final var cpuHistory = new GPUHistory();
     var needToSetPrice = false;
@@ -41,7 +41,7 @@ public class GpuMaintenanceService {
       cpuHistory.setEstimatedPrice(generatePrice());
     }
 
-    return cpuHistoryRepository.save(cpuHistory);
+    return historyRepository.save(cpuHistory);
   }
 
 
