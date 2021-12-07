@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: disk
+  name: disc
   labels:
-    app: disk
+    app: disc
 spec:
   selector:
     matchLabels:
-      app: disk
+      app: disc
   replicas: 1
   template:
     metadata:
-      name: disk
+      name: disc
       labels:
-        app: disk
+        app: disc
     spec:
       containers:
-        - name: disk
+        - name: disc
           imagePullPolicy: Always
-          image: drakus73/micro:disk
+          image: drakus73/micro:disc
           ports:
             - containerPort: 8091
-              name: disk-port
+              name: disc-port
           env:
             - name: DB_USER
               valueFrom:

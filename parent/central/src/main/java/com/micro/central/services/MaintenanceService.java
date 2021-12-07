@@ -13,8 +13,10 @@ import com.micro.central.repository.CentralHistoryRepository;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class MaintenanceService {
@@ -34,7 +36,9 @@ public class MaintenanceService {
 
     final var resultDto = new MaintenanceResultDto();
     final var countryCode = ipClient.getCountryCodeByIp(ip);
+    log.info("Country code {}", countryCode);
     final var currencyRate = currencyClient.getCurrencyRate(countryCode);
+    log.info("Currency rate {}", currencyRate);
     resultDto.setRate(currencyRate);
 
     var centralHistory = new CentralHistory();

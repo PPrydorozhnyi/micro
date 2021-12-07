@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TestController {
 
-  public static final String FORWARD_HEADER = "X-FORWARDED-FOR";
+  public static final String FORWARD_HEADER = "X-Forwarded-For";
 
   private final CurrencyClient currencyClient;
   private final IpClient ipClient;
@@ -26,6 +26,7 @@ public class TestController {
   @GetMapping("/maintenance/{configId}")
   public MaintenanceResultDto getRate(@PathVariable long configId, HttpServletRequest request) {
     String ipAddress = request.getHeader(FORWARD_HEADER);
+    log.info("Forwarded ip {}", ipAddress);
 
     if (ipAddress == null) {
       ipAddress = request.getRemoteAddr();
