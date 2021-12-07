@@ -1,7 +1,9 @@
 package com.micro.central.controllers;
 
+import com.micro.central.dto.MaintenanceResultDto;
 import com.micro.central.feigns.CurrencyClient;
 import com.micro.central.feigns.IpClient;
+import com.micro.central.services.MaintenanceService;
 import com.micro.data.models.RateResponse;
 import javax.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +21,10 @@ public class TestController {
 
   private final CurrencyClient currencyClient;
   private final IpClient ipClient;
+  private final MaintenanceService maintenanceService;
 
-  @GetMapping("/rate/{countryCode}")
-  public RateResponse getRate(@PathVariable String countryCode, HttpServletRequest request) {
+  @GetMapping("/maintenance/{configId}")
+  public MaintenanceResultDto getRate(@PathVariable long configId, HttpServletRequest request) {
     String ipAddress = request.getHeader(FORWARD_HEADER);
 
     if (ipAddress == null) {
@@ -29,7 +32,7 @@ public class TestController {
     }
 
     log.info("ip {}", ipAddress);
-    return currencyClient.getCurrencyRate(countryCode);
+    return maintenanceService.proceedMaintenance(configId, ipAddress);
   }
 
   @GetMapping("/ip/{ip}")

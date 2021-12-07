@@ -1,8 +1,11 @@
 package com.micro.gpu.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
-
-import javax.persistence.*;
 
 @Entity
 @Data
@@ -14,9 +17,9 @@ public class GPUConfig {
 
     private String name;
 
-    private Boolean temperature;
+    private boolean temperature;
 
-    private Boolean fanOperatingMode;
+    private boolean fanOperatingMode;
 
-    private Boolean loadQuantity;
+    private boolean loadQuantity;
 }

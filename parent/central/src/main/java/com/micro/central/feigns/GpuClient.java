@@ -1,5 +1,6 @@
 package com.micro.central.feigns;
 
+import com.micro.data.controllers.InnerGpuMaintenanceController;
 import com.micro.data.models.GPUConfigDto;
 import com.micro.data.models.GPUHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "gpu", url = "http://localhost:8092")
-public interface GpuClient {
+public interface GpuClient extends InnerGpuMaintenanceController {
     
     @GetMapping("/gpu-config")
     CollectionModel<GPUConfigDto> getConfigs();

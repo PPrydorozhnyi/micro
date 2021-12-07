@@ -1,22 +1,27 @@
 package com.micro.disc.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
-
-import javax.persistence.*;
 
 @Entity
 @Data
 @Table(name = "disc_config")
 public class DiscConfig {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Boolean speed;
+  private String name;
 
-    private Boolean temperature;
+  private boolean speed;
 
-    private Boolean integrity;
+  private boolean temperature;
+
+  private boolean integrity;
+
 }
