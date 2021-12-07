@@ -1,26 +1,31 @@
 package com.micro.cpu.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
-
-import javax.persistence.*;
 
 @Entity
 @Data
 @Table(name = "cpu_config")
 public class CPUConfig {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
 
-    private Boolean overclocking;
+  private String name;
 
-    private Boolean frequency;
+  private boolean overclocking;
 
-    private Boolean temperature;
+  private boolean frequency;
 
-    private Boolean loadSharing;
+  private boolean temperature;
 
-    private Boolean loadQuantity;
+  private boolean loadSharing;
+
+  private boolean loadQuantity;
+
 }

@@ -1,24 +1,24 @@
 package com.micro.data.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.micro.data.models.enums.LoadQuantity;
 import com.micro.data.models.enums.LoadSharing;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.time.Instant;
-
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class CPUHistoryDto {
-    private Long id;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CPUHistoryDto extends GeneralHistoryResponse {
 
-    private Instant time;
+  private Boolean overclocking;
 
-    private Boolean overclocking;
+  private Double frequency;
 
-    private Double frequency;
+  private Double temperature;
 
-    private Double temperature;
+  private LoadSharing loadSharing;
 
-    private LoadSharing loadSharing;
+  private LoadQuantity loadQuantity;
 
-    private LoadQuantity loadQuantity;
 }

@@ -1,6 +1,6 @@
 package com.micro.disc.entity;
 
-import com.micro.disc.entity.enums.Integrity;
+import com.micro.data.models.enums.Integrity;
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
 import lombok.Data;
 import org.hibernate.annotations.Type;
@@ -16,9 +16,9 @@ import java.time.Instant;
 public class DiscHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    private Instant time;
+    private Instant time = Instant.now();
 
     private Double speed;
 
@@ -27,4 +27,8 @@ public class DiscHistory {
     @Enumerated(EnumType.STRING)
     @Type(type = "enum")
     private Integrity integrity;
+
+    private double estimatedPrice;
+
+    private double actualPrice = 0;
 }

@@ -4,5 +4,5 @@ public enum Component {
     CPU,
     GPU,
     DISC,
-    MOTHERBOARD
+    MEMORY
 }

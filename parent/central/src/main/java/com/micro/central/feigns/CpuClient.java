@@ -1,5 +1,6 @@
 package com.micro.central.feigns;
 
+import com.micro.data.controllers.InnerCpuMaintenanceController;
 import com.micro.data.models.CPUConfigDto;
 import com.micro.data.models.CPUHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "cpu", url = "http://localhost:8090")
-public interface CpuClient {
+public interface CpuClient extends InnerCpuMaintenanceController {
 
   @GetMapping("/cpu-config")
   CollectionModel<CPUConfigDto> getConfigs();
