@@ -40,6 +40,7 @@ public class CpuConfigController {
         return "cpu/cpuConfigs";
     }
 
+    @GetMapping("/cpu-config/create")
     public String create(Model model){
         log.info("createCpuConfig");
         model.addAttribute("config", new CPUConfigDto());

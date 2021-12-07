@@ -43,6 +43,7 @@ public class CentralConfigController {
         return "central/centralConfigs";
     }
 
+    @GetMapping("/central-config/create")
     public String create(Model model){
         log.info("createCentralConfig");
         model.addAttribute("config", new CentralConfigDto());

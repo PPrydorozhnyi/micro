@@ -37,6 +37,7 @@ public class DiscConfigController {
         return "disc/discConfigs";
     }
 
+    @GetMapping("/disc-config/create")
     public String create(Model model){
         log.info("createDiscConfig");
         model.addAttribute("config", new DiscConfigDto());

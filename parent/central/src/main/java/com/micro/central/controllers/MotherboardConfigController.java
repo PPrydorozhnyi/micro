@@ -37,6 +37,7 @@ public class MotherboardConfigController {
         return "motherboard/motherboardConfigs";
     }
 
+    @GetMapping("/motherboard-config/create")
     public String create(Model model){
         log.info("createMotherboardConfig");
         model.addAttribute("config", new MotherboardConfigDto());

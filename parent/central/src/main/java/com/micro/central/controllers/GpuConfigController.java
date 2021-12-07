@@ -37,6 +37,7 @@ public class GpuConfigController {
         return "gpu/gpuConfigs";
     }
 
+    @GetMapping("/gpu-config/create")
     public String create(Model model){
         log.info("createGpuConfig");
         model.addAttribute("config", new GPUConfigDto());
