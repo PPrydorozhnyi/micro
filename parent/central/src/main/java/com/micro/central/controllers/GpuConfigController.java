@@ -4,11 +4,12 @@ import com.micro.central.feigns.GpuClient;
 import com.micro.data.models.GPUConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class GpuConfigController {
 
@@ -36,9 +37,15 @@ public class GpuConfigController {
         return "gpu/gpus";
     }
 
-    @PostMapping("/gpu-config/create")
-    public String create(@RequestBody GPUConfigDto config){
+    public String create(Model model){
         log.info("createGpuConfig");
+        model.addAttribute("config", new GPUConfigDto());
+
+        return "gpu/gpuCreate";
+    }
+
+    @PostMapping("/gpu-config/create")
+    public String create(@ModelAttribute("config") GPUConfigDto config){
         var createdConfig = gpuClient.createConfig(config).getContent();
         log.info("config {}", createdConfig);
 

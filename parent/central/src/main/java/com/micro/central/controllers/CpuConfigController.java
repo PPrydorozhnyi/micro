@@ -4,11 +4,12 @@ import com.micro.central.feigns.CpuClient;
 import com.micro.data.models.CPUConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class CpuConfigController {
 
@@ -36,9 +37,15 @@ public class CpuConfigController {
         return "cpu/cpus";
     }
 
-    @PostMapping("/cpu-config/create")
-    public String create(@RequestBody CPUConfigDto config){
+    public String create(Model model){
         log.info("createCpuConfig");
+        model.addAttribute("config", new CPUConfigDto());
+
+        return "cpu/cpuCreate";
+    }
+
+    @PostMapping("/cpu-config/create")
+    public String create(@ModelAttribute("config") CPUConfigDto config){
         var createdConfig = cpuClient.createConfig(config).getContent();
         log.info("config {}", createdConfig);
 

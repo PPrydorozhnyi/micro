@@ -4,11 +4,12 @@ import com.micro.central.feigns.DiscClient;
 import com.micro.data.models.DiscConfigDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class DiscConfigController {
 
@@ -36,9 +37,15 @@ public class DiscConfigController {
         return "disc/discs";
     }
 
-    @PostMapping("/disc-config/create")
-    public String create(@RequestBody DiscConfigDto config){
+    public String create(Model model){
         log.info("createDiscConfig");
+        model.addAttribute("config", new DiscConfigDto());
+
+        return "disc/discCreate";
+    }
+
+    @PostMapping("/disc-config/create")
+    public String create(@ModelAttribute("config") DiscConfigDto config){
         var createdConfig = discClient.createConfig(config).getContent();
         log.info("config {}", createdConfig);
 
