@@ -8,17 +8,19 @@ import java.time.Instant;
 
 @Data
 public class CPUHistoryDto {
-    private Long id;
+
+    private long id;
 
     private Instant time;
 
-    private Boolean overclocking;
+    private boolean overclocking;
 
-    private Double frequency;
+    private double frequency;
 
-    private Double temperature;
+    private double temperature;
 
     private LoadSharing loadSharing;
 
     private LoadQuantity loadQuantity;
+
 }

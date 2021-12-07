@@ -1,6 +1,5 @@
 package com.micro.cpu.entity;
 
-
 import com.micro.cpu.entity.enums.LoadQuantity;
 import com.micro.cpu.entity.enums.LoadSharing;
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
@@ -16,17 +15,18 @@ import java.time.Instant;
 @Table(name = "cpu_history")
 @TypeDef(name = "enum", typeClass = PostgreSQLEnumType.class)
 public class CPUHistory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private Instant time;
 
-    private Boolean overclocking;
+    private double overclocking;
 
-    private Double frequency;
+    private double frequency;
 
-    private Double temperature;
+    private double temperature;
 
     @Enumerated(EnumType.STRING)
     @Type(type = "enum")
@@ -35,4 +35,8 @@ public class CPUHistory {
     @Enumerated(EnumType.STRING)
     @Type(type = "enum")
     private LoadQuantity loadQuantity;
+
+    private double estimatedPrice;
+
+    private double actualPrice;
 }
