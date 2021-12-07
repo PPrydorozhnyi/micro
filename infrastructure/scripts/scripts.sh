@@ -31,3 +31,5 @@ kubectl create secret generic db-creds \
   --from-literal host=12.12.12.12 \
   --from-literal database=database \
   --from-literal port=5049
+
+kubectl patch svc load-balancer -p '{"spec":{"externalTrafficPolicy":"Local"}}'

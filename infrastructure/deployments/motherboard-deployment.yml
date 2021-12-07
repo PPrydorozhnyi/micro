@@ -21,7 +21,7 @@ spec:
           image: drakus73/micro:motherboard
           ports:
             - containerPort: 8093
-              name: motherboard-port
+              name: md-port
           env:
             - name: DB_USER
               valueFrom:
