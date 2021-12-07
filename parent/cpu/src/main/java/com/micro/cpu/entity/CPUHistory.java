@@ -43,6 +43,6 @@ public class CPUHistory {
 
   private double estimatedPrice;
 
-  private Double actualPrice;
+  private double actualPrice = 0;
 
 }
