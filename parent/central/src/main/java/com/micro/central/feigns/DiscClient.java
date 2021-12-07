@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "disc", url = "http://localhost:8091")
+@FeignClient(name = "disc")
 public interface DiscClient extends InnerDiscMaintenanceController {
 
     @GetMapping("/disc-config")

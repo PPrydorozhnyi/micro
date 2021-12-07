@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "gpu", url = "http://localhost:8092")
+@FeignClient(name = "gpu")
 public interface GpuClient extends InnerGpuMaintenanceController {
     
     @GetMapping("/gpu-config")

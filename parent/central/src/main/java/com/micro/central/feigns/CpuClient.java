@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "cpu", url = "http://localhost:8090")
+@FeignClient(name = "cpu")
 public interface CpuClient extends InnerCpuMaintenanceController {
 
   @GetMapping("/cpu-config")
