@@ -1,13 +1,12 @@
 package com.micro.central.repository;
 
 import com.micro.central.entity.CentralConfig;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "central-config",path = "central-config")
-public interface CentralConfigRepository extends PagingAndSortingRepository<CentralConfig, Long> {
+@Repository
+public interface CentralConfigRepository extends JpaRepository<CentralConfig, Long> {
 
     Optional<CentralConfig> findCentralConfigByMotherboardId(Long id);
 
