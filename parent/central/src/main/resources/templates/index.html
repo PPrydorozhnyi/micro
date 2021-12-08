@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Central Configs</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Microservices</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/central-configs">Central Configs</a></li>
+      <li><a href="/central-histories">Central Histories</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Pages<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li><a href="/cpu-configs">CPU Configs</a></li>
+        <li><a href="/disc-configs">Disc Configs</a></li>
+        <li><a href="/gpu-configs">GPU Configs</a></li>
+        <li><a href="/motherboard-configs">Motherboard Configs</a></li>
+        <li><a href="/cpu-histories">CPU Histories</a></li>
+        <li><a href="/disc-histories">Disc Histories</a></li>
+        <li><a href="/gpu-histories">GPU Histories</a></li>
+        <li><a href="/motherboard-histories">Motherboard Histories</a></li>
+      </ul>
+    </ul>
+  </div>
+</nav>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 order-2 order-lg-1">
+        <h1>Microservice project</h1>
+        <p class="lead">Microservice project deployed on Google Kubernetes Engine with Google Cloud SQL as DB</p>
+          <p><a href="/central-configs" class="btn btn-primary shadow mr-2">Configs</a>
+            <a href="/central-histories" class="btn btn-outline-primary">History</a></p>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2"><img src="https://lh3.googleusercontent.com/proxy/5V8VH8tCDcj-MtLGfVme8gnuPyXAb3SjS7w7PWsz6fd67ZZQcAsdICUFNNqkutaFud5areuc8XNY3s0X5EqKBAWvfAJZz9Rq3YbPZtGu" alt="landing image" class="img-fluid"></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
