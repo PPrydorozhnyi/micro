@@ -19,7 +19,7 @@ kubectl apply -f infrastructure/deployments/gpu-deployment.yml
 kubectl apply -f infrastructure/services/motherboard-service.yml
 kubectl apply -f infrastructure/deployments/motherboard-deployment.yml
 
-kubectl apply -f infrastructure/services/load-balacer.yml
+kubectl apply -f infrastructure/services/load-balancer.yml
 
 kubectl scale deployment currency --replicas=0
 
