@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MaintenanceService {
 
+  private static final String LOOP_BACK = "0:0:0:0:0:0:0:1";
+
   private final CpuClient cpuClient;
   private final DiscClient discClient;
   private final GpuClient gpuClient;
@@ -33,7 +35,7 @@ public class MaintenanceService {
         .orElseThrow(() -> new RuntimeException("Cannot find config " + configId));
 
     final var resultDto = new MaintenanceResultDto();
-    final var countryCode = ipClient.getCountryCodeByIp(ip);
+    final var countryCode = LOOP_BACK.equals(ip) ? "NL" : ipClient.getCountryCodeByIp(ip);
     final var currencyRate = currencyClient.getCurrencyRate(countryCode);
     resultDto.setRate(currencyRate);
 
@@ -66,12 +68,13 @@ public class MaintenanceService {
       final var historyDto = motherboardClient.proceedMaintenance(centralConfig.getMotherboardId());
       historyDto.setEstimatedPrice(convertToRate(historyDto.getEstimatedPrice(), currencyRate.rate()));
       centralHistory.setMotherboardId(historyDto.getId());
-      resultDto.setMotherboardHistoryDto(historyDto);
+      resultDto.setMotherboardHistory(historyDto);
     }
 
     centralHistory = centralHistoryRepository.save(centralHistory);
 
     resultDto.setId(centralHistory.getId());
+    resultDto.setName(centralConfig.getName());
 
     return resultDto;
   }

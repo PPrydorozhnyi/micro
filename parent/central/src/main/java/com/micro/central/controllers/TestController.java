@@ -23,7 +23,7 @@ public class TestController {
   private final IpClient ipClient;
   private final MaintenanceService maintenanceService;
 
-  @GetMapping("/maintenance/{configId}")
+  @GetMapping("/maintenance/json/{configId}")
   public MaintenanceResultDto getRate(@PathVariable long configId, HttpServletRequest request) {
     String ipAddress = request.getHeader(FORWARD_HEADER);
 
