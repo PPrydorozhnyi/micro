@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Map;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -27,7 +29,12 @@ public class CentralConfigController {
         var config = mapper.map(centralConfigService.getConfigById(id));
         log.info("config {}", config);
 
-        model.addAttribute("config", config);
+        model.addAllAttributes(Map.of(
+                "config", config,
+                "cpuConfig", centralConfigService.getCpuConfigById(config.getCpuId()),
+                "discConfig", centralConfigService.getDiscConfigById(config.getDiscId()),
+                "gpuConfig", centralConfigService.getGpuConfigById(config.getGpuId()),
+                "motherboardConfig", centralConfigService.getMotherboardConfigById(config.getMotherboardId())));
 
         return "central/centralConfigView";
     }
@@ -46,7 +53,12 @@ public class CentralConfigController {
     @GetMapping("/central-config/create")
     public String create(Model model){
         log.info("createCentralConfig");
-        model.addAttribute("config", new CentralConfigDto());
+        model.addAllAttributes(Map.of(
+                "config", new CentralConfigDto(),
+                "cpuConfigs", centralConfigService.getCpuConfigs(),
+                "discConfigs", centralConfigService.getDiscConfigs(),
+                "gpuConfigs", centralConfigService.getGpuConfigs(),
+                "motherboardConfigs", centralConfigService.getMotherboardConfigs()));
 
         return "central/centralConfigCreate";
     }
@@ -62,7 +74,7 @@ public class CentralConfigController {
     @PostMapping("/central-config/{id}")
     public String deleteConfig(@PathVariable long id){
         log.info("delete centralConfig with id {}", id);
-        deleteConfig(id);
+        centralConfigService.deleteConfigById(id);
 
         return "redirect:/central-configs";
     }
