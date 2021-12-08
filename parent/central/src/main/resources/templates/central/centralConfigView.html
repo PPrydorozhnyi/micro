@@ -26,19 +26,35 @@
                     </tr>
                     <tr>
                         <td>CPU Config name</td>
-                        <td><a th:href="@{'/cpu-config/' + ${cpuConfig.id}}" th:text="${cpuConfig.name}" /></td>
+                        <td>
+                            <span th:if="${cpuConfig != null}">
+                                <a th:href="@{'/cpu-config/' + ${cpuConfig.id}}" th:text="${cpuConfig.name}" />
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Disc Config name</td>
-                        <td><a th:href="@{'/disc-config/' + ${discConfig.id}}" th:text="${discConfig.name}" /></td>
+                        <td>
+                            <span th:if="${discConfig != null}">
+                                <a th:href="@{'/disc-config/' + ${discConfig.id}}" th:text="${discConfig.name}" />
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>GPU Config name</td>
-                        <td><a th:href="@{'/gpu-config/' + ${gpuConfig.id}}" th:text="${gpuConfig.name}" /></td>
+                        <td>
+                            <span th:if="${gpuConfig != null}">
+                                <a th:href="@{'/gpu-config/' + ${gpuConfig.id}}" th:text="${gpuConfig.name}" />
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Motherboard Config name</td>
-                        <td><a th:href="@{'/motherboard-config/' + ${motherboardConfig.id}}" th:text="${motherboardConfig.name}" /></td>
+                        <td>
+                            <span th:if="${motherboardConfig != null}">
+                                <a th:href="@{'/motherboard-config/' + ${motherboardConfig.id}}" th:text="${motherboardConfig.name}" />
+                            </span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

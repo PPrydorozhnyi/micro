@@ -26,26 +26,42 @@
                     </tr>
                     <tr>
                         <td>CPU History</td>
-                        <td><a th:href="@{'/cpu-history/' + ${history.cpuId}}"/>Look at CPU History</td>
+                        <td>
+                            <span th:if="${history.cpuId != null}">
+                                <a th:href="@{'/cpu-history/' + ${history.cpuId}}"/>Look at CPU History
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Disc History</td>
-                        <td><a th:href="@{'/disc-history/' + ${history.discId}}"/>Look at Disc History</td>
+                        <td>
+                            <span th:if="${history.discId != null}">
+                                <a th:href="@{'/disc-history/' + ${history.discId}}"/>Look at Disc History
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>GPU History</td>
-                        <td><a th:href="@{'/gpu-history/' + ${history.gpuId}}"/>Look at GPU History</td>
+                        <td>
+                            <span th:if="${history.gpuId != null}">
+                                <a th:href="@{'/gpu-history/' + ${history.gpuId}}"/>Look at GPU History
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>Motherboard History</td>
-                        <td><a th:href="@{'/motherboard-history/' + ${history.motherboardId}}"/>Look at Motherboard History</td>
+                        <td>
+                            <span th:if="${history.motherboardId != null}">
+                                <a th:href="@{'/motherboard-history/' + ${history.motherboardId}}"/>Look at Motherboard History
+                            </span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="col-2 margin-view">
-            <form method="GET" action="/cpu-histories" class="form-signin">
+            <form method="GET" action="/central-histories" class="form-signin">
                 <button class="btn btn btn-info btn-block" type="submit">View all histories</button>
             </form>
         </div>
