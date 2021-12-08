@@ -1,37 +1,39 @@
 package com.micro.central.controllers;
 
 import com.micro.central.feigns.GpuClient;
-import com.micro.data.models.GPUHistoryDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
 
 @Slf4j
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class GpuHistoryController {
 
     private final GpuClient gpuHistoryClient;
 
     @GetMapping("/gpu-history/{id}")
-    public GPUHistoryDto getGpuHistoryById(@PathVariable Long id){
+    public String getGpuHistoryById(@PathVariable Long id, Model model){
         log.info("GetGpuHistoryById {}", id);
         var history = gpuHistoryClient.getHistoryById(id).getContent();
         log.info("history {}", history);
 
-        return history;
+        model.addAttribute("history", history);
+
+        return "gpu/gpuHistoryView";
     }
 
     @GetMapping("/gpu-histories")
-    public Collection<GPUHistoryDto> getAllGpuHistories(){
+    public String getAllGpuHistories(Model model){
         log.info("getAllGpuHistories");
         var histories = gpuHistoryClient.getHistories().getContent();
         log.info("size = {}", histories.size());
 
-        return histories;
+        model.addAttribute("histories", histories);
+
+        return "gpu/gpuHistories";
     }
 }

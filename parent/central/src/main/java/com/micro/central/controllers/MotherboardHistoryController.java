@@ -1,37 +1,39 @@
 package com.micro.central.controllers;
 
 import com.micro.central.feigns.MotherboardClient;
-import com.micro.data.models.MotherboardHistoryDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
 
 @Slf4j
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class MotherboardHistoryController {
 
     private final MotherboardClient motherboardHistoryClient;
 
     @GetMapping("/motherboard-history/{id}")
-    public MotherboardHistoryDto getMotherboardHistoryById(@PathVariable Long id){
+    public String getMotherboardHistoryById(@PathVariable Long id, Model model){
         log.info("GetMotherboardHistoryById {}", id);
         var history = motherboardHistoryClient.getHistoryById(id).getContent();
         log.info("history {}", history);
 
-        return history;
+        model.addAttribute("history", history);
+
+        return "motherboard/motherboardHistoryView";
     }
 
     @GetMapping("/motherboard-histories")
-    public Collection<MotherboardHistoryDto> getAllMotherboardHistories(){
+    public String getAllMotherboardHistories(Model model){
         log.info("getAllMotherboardHistories");
         var histories = motherboardHistoryClient.getHistories().getContent();
         log.info("size = {}", histories.size());
 
-        return histories;
+        model.addAttribute("histories", histories);
+
+        return "motherboard/motherboardHistories";
     }
 }

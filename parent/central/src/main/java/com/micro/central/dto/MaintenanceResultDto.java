@@ -13,11 +13,12 @@ import lombok.Data;
 public class MaintenanceResultDto {
 
   private long id;
+  private String name;
 
   private CPUHistoryDto cpuHistory;
   private GPUHistoryDto gpuHistory;
   private DiscHistoryDto discHistory;
-  private MotherboardHistoryDto motherboardHistoryDto;
+  private MotherboardHistoryDto motherboardHistory;
   private RateResponse rate;
 
 }

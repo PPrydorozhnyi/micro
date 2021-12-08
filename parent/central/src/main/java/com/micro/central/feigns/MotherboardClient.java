@@ -6,10 +6,7 @@ import com.micro.data.models.MotherboardHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "motherboard", url = "http://localhost:8093")
 public interface MotherboardClient extends InnerMotherboardMaintenanceController {
@@ -22,6 +19,9 @@ public interface MotherboardClient extends InnerMotherboardMaintenanceController
 
     @PostMapping("/motherboard-config")
     EntityModel<MotherboardConfigDto> createConfig(@RequestBody MotherboardConfigDto config);
+
+    @DeleteMapping("/motherboard-config/{id}")
+    EntityModel<MotherboardConfigDto> deleteConfig(@PathVariable  long id);
 
     @GetMapping("/motherboard-history")
     CollectionModel<MotherboardHistoryDto> getHistories();

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Maintenance page</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-10">
+            <h2>Maintenance for <a th:href="@{'/central-config/' + ${maintenance.id}}"
+                                   th:text="${maintenance.name}"/></h2>
+            <div class="panel panel-default">
+                <h3>CPU</h3>
+                <ul>
+                    <li><a th:href="@{'/cpu-config/' + ${maintenance.cpuHistory.configId}}"
+                           th:text="${maintenance.cpuHistory.configName}"/></li>
+                    <li th:text="'Time ' + ${maintenance.cpuHistory.time}"></li>
+                    <li th:text="'Overclocking present ' + ${maintenance.cpuHistory.overclocking ?: false}"></li>
+                    <li th:text="'Frequency ' +  ${maintenance.cpuHistory.frequency ?: '0'} + ' GHz'"></li>
+                    <li th:text="'Temperature ' + ${maintenance.cpuHistory.temperature ?: '0'} + ' C'"></li>
+                    <li th:text="'Load sharing between cores ' + ${maintenance.cpuHistory.loadSharing ?: 'None'}"></li>
+                    <li th:text="'Load ' + ${maintenance.cpuHistory.loadQuantity ?: 'None'}"></li>
+                    <li th:text="'Estimated price ' + ${maintenance.cpuHistory.estimatedPrice} +' ' + ${maintenance.rate.currencyName}"></li>
+                    <li th:text="'Actual price ' + ${maintenance.cpuHistory.actualPrice} + ' ' + ${maintenance.rate.currencyName}"></li>
+                </ul>
+                <h3>GPU</h3>
+                <ul>
+                    <li><a th:href="@{'/gpu-config/' + ${maintenance.gpuHistory.configId}}"
+                           th:text="${maintenance.gpuHistory.configName}"/></li>
+                    <li th:text="'Time ' + ${maintenance.gpuHistory.time}"></li>
+                    <li th:text="'Temperature ' + ${maintenance.gpuHistory.temperature ?: '0'} + ' C'"></li>
+                    <li th:text="'Fan operating mode ' + ${maintenance.gpuHistory.fanOperatingMode ?: 'None'}"></li>
+                    <li th:text="'Load ' + ${maintenance.gpuHistory.loadQuantity ?: 'None'}"></li>
+                    <li th:text="'Estimated price ' + ${maintenance.gpuHistory.estimatedPrice} +' ' + ${maintenance.rate.currencyName}"></li>
+                    <li th:text="'Actual price ' + ${maintenance.gpuHistory.actualPrice} + ' ' + ${maintenance.rate.currencyName}"></li>
+                </ul>
+                <h3>Disk</h3>
+                <ul>
+                    <li><a th:href="@{'/disc-config/' + ${maintenance.discHistory.configId}}"
+                           th:text="${maintenance.discHistory.configName}"/></li>
+                    <li th:text="'Time ' + ${maintenance.discHistory.time}"></li>
+                    <li th:text="'Speed ' +  ${maintenance.discHistory.speed ?: '0'} + ' MB/s'"></li>
+                    <li th:text="'Temperature ' + ${maintenance.discHistory.temperature ?: '0'} + ' C'"></li>
+                    <li th:text="'Integrity ' + ${maintenance.discHistory.integrity ?: 'None'}"></li>
+                    <li th:text="'Estimated price ' + ${maintenance.discHistory.estimatedPrice} +' ' + ${maintenance.rate.currencyName}"></li>
+                    <li th:text="'Actual price ' + ${maintenance.discHistory.actualPrice} + ' ' + ${maintenance.rate.currencyName}"></li>
+                </ul>
+                <h3>Motherboard</h3>
+                <ul>
+                    <li><a th:href="@{'/motherboard-config/' + ${maintenance.motherboardHistory.configId}}"
+                           th:text="${maintenance.motherboardHistory.configName}"/></li>
+                    <li th:text="'Time ' + ${maintenance.motherboardHistory.time}"></li>
+                    <li>
+                        Attached components
+                        <ul th:each="anItem : ${maintenance.motherboardHistory.components}">
+                            <li th:text="${anItem}"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Available ports for
+                        <ul th:each="freePort : ${maintenance.motherboardHistory.freePorts}">
+                            <li th:text="${freePort}"></li>
+                        </ul>
+                    </li>
+                    <li th:text="'Estimated price ' + ${maintenance.motherboardHistory.estimatedPrice} +' ' + ${maintenance.rate.currencyName}"></li>
+                    <li th:text="'Actual price ' + ${maintenance.motherboardHistory.actualPrice} + ' ' + ${maintenance.rate.currencyName}"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
