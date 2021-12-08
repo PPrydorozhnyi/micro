@@ -3,7 +3,6 @@ package com.micro.data.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.micro.data.models.enums.FanOperatingMode;
 import com.micro.data.models.enums.LoadQuantity;
-import java.time.Instant;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

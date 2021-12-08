@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Config page</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-10">
+            <h2>Config</h2>
+            <div class="panel panel-default">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td th:text="${config.name}"></td>
+                    </tr>
+                    <tr>
+                        <td>Components</td>
+                        <td th:text="${config.components}"></td>
+                    </tr>
+                    <tr>
+                        <td>Free Ports</td>
+                        <td th:text="${config.freePorts}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-2 margin-view">
+            <form method="GET" action="/motherboard-configs" class="form-signin">
+                <button class="btn btn btn-info btn-block" type="submit">View all configs</button>
+            </form>
+            <form action="#" th:action="@{'/motherboard-config/' + ${config.id}}" th:method="delete" class="form-signin">
+                <input type="hidden" name="_method" value="delete"/>
+                <button class="btn btn btn-danger btn-block" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    <h5 th:text="${error}"></h5>
+</div>
+</body>
+</html>

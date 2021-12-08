@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>History page</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-10">
+            <h2>History</h2>
+            <div class="panel panel-default">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Config name</td>
+                        <td><a th:href="@{'/central-config/' + ${history.configId}}" th:text="${history.configName}" /></td>
+                    </tr>
+                    <tr>
+                        <td>CPU History</td>
+                        <td><a th:href="@{'/cpu-history/' + ${history.cpuId}}"/>Look at CPU History</td>
+                    </tr>
+                    <tr>
+                        <td>Disc History</td>
+                        <td><a th:href="@{'/disc-history/' + ${history.discId}}"/>Look at Disc History</td>
+                    </tr>
+                    <tr>
+                        <td>GPU History</td>
+                        <td><a th:href="@{'/gpu-history/' + ${history.gpuId}}"/>Look at GPU History</td>
+                    </tr>
+                    <tr>
+                        <td>Motherboard History</td>
+                        <td><a th:href="@{'/motherboard-history/' + ${history.motherboardId}}"/>Look at Motherboard History</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-2 margin-view">
+            <form method="GET" action="/cpu-histories" class="form-signin">
+                <button class="btn btn btn-info btn-block" type="submit">View all histories</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

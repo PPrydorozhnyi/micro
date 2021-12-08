@@ -6,10 +6,7 @@ import com.micro.data.models.DiscHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "disc")
 public interface DiscClient extends InnerDiscMaintenanceController {
@@ -22,6 +19,9 @@ public interface DiscClient extends InnerDiscMaintenanceController {
 
     @PostMapping("/disc-config")
     EntityModel<DiscConfigDto> createConfig(@RequestBody DiscConfigDto config);
+
+    @DeleteMapping("/disc-config/{id}")
+    EntityModel<DiscConfigDto> deleteConfig(@PathVariable  long id);
 
     @GetMapping("/disc-history")
     CollectionModel<DiscHistoryDto> getHistories();

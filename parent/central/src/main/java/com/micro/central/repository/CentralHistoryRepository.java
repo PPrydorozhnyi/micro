@@ -1,9 +1,9 @@
 package com.micro.central.repository;
 
 import com.micro.central.entity.CentralHistory;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "central-history", path = "central-history")
-public interface CentralHistoryRepository extends PagingAndSortingRepository<CentralHistory, Long> {
+@Repository
+public interface CentralHistoryRepository extends JpaRepository<CentralHistory, Long> {
 }

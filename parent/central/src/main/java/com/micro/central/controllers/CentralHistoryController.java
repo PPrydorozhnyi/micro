@@ -1,18 +1,16 @@
 package com.micro.central.controllers;
 
-import com.micro.central.dto.CentralHistoryDto;
 import com.micro.central.mappers.CentralHistoryMapper;
-import com.micro.central.service.CentralHistoryService;
+import com.micro.central.services.CentralHistoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
 
 @Slf4j
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class CentralHistoryController {
 
@@ -21,20 +19,24 @@ public class CentralHistoryController {
     private final CentralHistoryMapper mapper;
 
     @GetMapping("/central-history/{id}")
-    public CentralHistoryDto getCentralHistoryById(@PathVariable Long id){
+    public String getCentralHistoryById(@PathVariable Long id, Model model){
         log.info("GetCentralHistoryById {}", id);
         var history = mapper.map(centralHistoryService.getHistoryById(id));
         log.info("history {}", history);
 
-        return history;
+        model.addAttribute("history", history);
+
+        return "central/centralHistoryView";
     }
 
     @GetMapping("/central-histories")
-    public Collection<CentralHistoryDto> getAllCentralHistories(){
+    public String getAllCentralHistories(Model model){
         log.info("getAllCentralHistories");
         var histories = mapper.map(centralHistoryService.getHistories());
         log.info("size = {}", histories.size());
 
-        return histories;
+        model.addAttribute("histories", histories);
+
+        return "central/centralHistories";
     }
 }

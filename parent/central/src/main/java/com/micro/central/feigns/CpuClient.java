@@ -6,10 +6,7 @@ import com.micro.data.models.CPUHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "cpu")
 public interface CpuClient extends InnerCpuMaintenanceController {
@@ -22,6 +19,9 @@ public interface CpuClient extends InnerCpuMaintenanceController {
 
   @PostMapping("/cpu-config")
   EntityModel<CPUConfigDto> createConfig(@RequestBody CPUConfigDto config);
+
+  @DeleteMapping("/cpu-config/{id}")
+  EntityModel<CPUConfigDto> deleteConfig(@PathVariable  long id);
 
   @GetMapping("/cpu-history")
   CollectionModel<CPUHistoryDto> getHistories();

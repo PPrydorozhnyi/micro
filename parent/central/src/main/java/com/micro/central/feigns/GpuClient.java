@@ -6,10 +6,7 @@ import com.micro.data.models.GPUHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "gpu")
 public interface GpuClient extends InnerGpuMaintenanceController {
@@ -22,6 +19,9 @@ public interface GpuClient extends InnerGpuMaintenanceController {
 
     @PostMapping("/gpu-config")
     EntityModel<GPUConfigDto> createConfig(@RequestBody GPUConfigDto config);
+
+    @DeleteMapping("/gpu-config/{id}")
+    EntityModel<GPUHistoryDto> deleteConfig(@PathVariable  long id);
 
     @GetMapping("/gpu-history")
     CollectionModel<GPUHistoryDto> getHistories();
