@@ -27,7 +27,7 @@
             <label class="control-label col-sm-2">CPU Config:</label>
             <div class="col-sm-8">
                 <select th:field="*{cpuId}" class="form-select form-select-lg">
-                    <option selected value="null">---</option>
+                    <option selected th:value="null">---</option>
                     <option th:each="config : ${cpuConfigs}" th:value="${config.id}" th:text="${config.name}"></option>
                 </select>
             </div>
@@ -37,7 +37,7 @@
             <label class="control-label col-sm-2">Disc Config:</label>
             <div class="col-sm-8">
                 <select th:field="*{discId}" class="form-select form-select-lg">
-                    <option selected value="null">---</option>
+                    <option selected th:value="null">---</option>
                     <option th:each="config : ${discConfigs}" th:value="${config.id}" th:text="${config.name}"></option>
                 </select>
             </div>
@@ -47,7 +47,7 @@
             <label class="control-label col-sm-2">Gpu Config:</label>
             <div class="col-sm-8">
                 <select th:field="*{gpuId}" class="form-select form-select-lg">
-                    <option selected value="null">---</option>
+                    <option selected th:value="null">---</option>
                     <option th:each="config : ${gpuConfigs}" th:value="${config.id}" th:text="${config.name}"></option>
                 </select>
             </div>
@@ -57,7 +57,7 @@
             <label class="control-label col-sm-2">Motherboard Config:</label>
             <div class="col-sm-8">
                 <select th:field="*{motherboardId}" class="form-select form-select-lg">
-                    <option selected value="null">---</option>
+                    <option selected th:value="null">---</option>
                     <option th:each="config : ${motherboardConfigs}" th:value="${config.id}" th:text="${config.name}"></option>
                 </select>
             </div>

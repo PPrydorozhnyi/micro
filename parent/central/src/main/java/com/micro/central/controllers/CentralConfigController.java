@@ -29,12 +29,17 @@ public class CentralConfigController {
         var config = mapper.map(centralConfigService.getConfigById(id));
         log.info("config {}", config);
 
-        model.addAllAttributes(Map.of(
-                "config", config,
-                "cpuConfig", centralConfigService.getCpuConfigById(config.getCpuId()),
-                "discConfig", centralConfigService.getDiscConfigById(config.getDiscId()),
-                "gpuConfig", centralConfigService.getGpuConfigById(config.getGpuId()),
-                "motherboardConfig", centralConfigService.getMotherboardConfigById(config.getMotherboardId())));
+        model.addAttribute("config", config);
+
+        if(config.getDiscId() != null)
+            model.addAttribute("discConfig", centralConfigService.getDiscConfigById(config.getDiscId()));
+        if(config.getCpuId() != null)
+            model.addAttribute("cpuConfig", centralConfigService.getCpuConfigById(config.getCpuId()));
+        if(config.getGpuId() != null)
+            model.addAttribute("gpuConfig", centralConfigService.getGpuConfigById(config.getGpuId()));
+        if(config.getMotherboardId() != null)
+            model.addAttribute("motherboardConfig",
+                    centralConfigService.getMotherboardConfigById(config.getMotherboardId()));
 
         return "central/centralConfigView";
     }
