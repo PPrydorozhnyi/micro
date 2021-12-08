@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Config page</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-10">
+            <h2>Config</h2>
+            <div class="panel panel-default">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td th:text="${config.name}"></td>
+                    </tr>
+                    <tr>
+                        <td>CPU Config name</td>
+                        <td><a th:href="@{'/cpu-config/' + ${cpuConfig.id}}" th:text="${cpuConfig.name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Disc Config name</td>
+                        <td><a th:href="@{'/disc-config/' + ${discConfig.id}}" th:text="${discConfig.name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>GPU Config name</td>
+                        <td><a th:href="@{'/gpu-config/' + ${gpuConfig.id}}" th:text="${gpuConfig.name}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Motherboard Config name</td>
+                        <td><a th:href="@{'/motherboard-config/' + ${motherboardConfig.id}}" th:text="${motherboardConfig.name}" /></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-2 margin-view">
+            <form action="#" th:action="@{'/maintenance/' + ${config.id}}" th:method="get" class="form-signin">
+                <button class="btn btn btn-success btn-block" type="submit">Process</button>
+            </form>
+            <form method="GET" action="/central-configs" class="form-signin">
+                <button class="btn btn btn-info btn-block" type="submit">View all configs</button>
+            </form>
+            <form action="#" th:action="@{'/central-config/' + ${config.id}}" th:method="delete" class="form-signin">
+                <input type="hidden" name="_method" value="delete"/>
+                <button class="btn btn btn-danger btn-block" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    <h5 th:text="${error}"></h5>
+</div>
+</body>
+</html>
