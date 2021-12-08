@@ -16,12 +16,12 @@
 
     <div class="row">
         <div class="col-10">
-            <h2>Maintenance for <a th:href="@{'/central-config/' + ${maintenance.id}}"
+            <h2>Maintenance for <a th:href="@{'/central-history/' + ${maintenance.id}}"
                                    th:text="${maintenance.name}"/></h2>
             <div class="panel panel-default">
                 <h3>CPU</h3>
                 <ul>
-                    <li><a th:href="@{'/cpu-config/' + ${maintenance.cpuHistory.configId}}"
+                    <li><a th:href="@{'/cpu-history/' + ${maintenance.cpuHistory.configId}}"
                            th:text="${maintenance.cpuHistory.configName}"/></li>
                     <li th:text="'Time ' + ${maintenance.cpuHistory.time}"></li>
                     <li th:text="'Overclocking present ' + ${maintenance.cpuHistory.overclocking ?: false}"></li>
@@ -34,7 +34,7 @@
                 </ul>
                 <h3>GPU</h3>
                 <ul>
-                    <li><a th:href="@{'/gpu-config/' + ${maintenance.gpuHistory.configId}}"
+                    <li><a th:href="@{'/gpu-history/' + ${maintenance.gpuHistory.configId}}"
                            th:text="${maintenance.gpuHistory.configName}"/></li>
                     <li th:text="'Time ' + ${maintenance.gpuHistory.time}"></li>
                     <li th:text="'Temperature ' + ${maintenance.gpuHistory.temperature ?: '0'} + ' C'"></li>
@@ -45,7 +45,7 @@
                 </ul>
                 <h3>Disk</h3>
                 <ul>
-                    <li><a th:href="@{'/disc-config/' + ${maintenance.discHistory.configId}}"
+                    <li><a th:href="@{'/disc-history/' + ${maintenance.discHistory.configId}}"
                            th:text="${maintenance.discHistory.configName}"/></li>
                     <li th:text="'Time ' + ${maintenance.discHistory.time}"></li>
                     <li th:text="'Speed ' +  ${maintenance.discHistory.speed ?: '0'} + ' MB/s'"></li>
@@ -56,7 +56,7 @@
                 </ul>
                 <h3>Motherboard</h3>
                 <ul>
-                    <li><a th:href="@{'/motherboard-config/' + ${maintenance.motherboardHistory.configId}}"
+                    <li><a th:href="@{'/motherboard-history/' + ${maintenance.motherboardHistory.configId}}"
                            th:text="${maintenance.motherboardHistory.configName}"/></li>
                     <li th:text="'Time ' + ${maintenance.motherboardHistory.time}"></li>
                     <li>
