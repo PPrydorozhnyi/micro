@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TestController {
 
-  public static final String FORWARD_HEADER = "X-Forwarded-For";
+  public static final String FORWARD_HEADER = "X-Forward-For";
 
   private final CurrencyClient currencyClient;
   private final IpClient ipClient;
